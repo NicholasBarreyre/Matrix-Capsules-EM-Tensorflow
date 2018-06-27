@@ -133,3 +133,8 @@ def load_cifar100(is_training):
         return cifar100.load_data(label_mode='fine')[0]
     else:
         return cifar100.load_data(label_mode='fine')[1]
+
+# TODO: implement this
+def create_inputs_translationalCube(is_train):
+    pass
+    

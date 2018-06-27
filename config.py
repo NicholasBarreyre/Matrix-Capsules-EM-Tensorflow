@@ -49,7 +49,8 @@ def get_coord_add(dataset_name: str):
                'smallNORB': ([[[8., 8.], [12., 8.], [16., 8.], [24., 8.]],
                               [[8., 12.], [12., 12.], [16., 12.], [24., 12.]],
                               [[8., 16.], [12., 16.], [16., 16.], [24., 16.]],
-                              [[8., 24.], [12., 24.], [16., 24.], [24., 24.]]], 32.)
+                              [[8., 24.], [12., 24.], [16., 24.], [24., 24.]]], 32.),
+               'translationalCube':() # TODO: figure this out
                }
     coord_add, scale = options[dataset_name]
 
@@ -60,7 +61,7 @@ def get_coord_add(dataset_name: str):
 
 def get_dataset_size_train(dataset_name: str):
     options = {'mnist': 55000, 'smallNORB': 23400 * 2,
-               'fashion_mnist': 55000, 'cifar10': 50000, 'cifar100': 50000}
+               'fashion_mnist': 55000, 'cifar10': 50000, 'cifar100': 50000, 'translationalCube': 121}
     return options[dataset_name]
 
 
@@ -71,11 +72,11 @@ def get_dataset_size_test(dataset_name: str):
 
 
 def get_num_classes(dataset_name: str):
-    options = {'mnist': 10, 'smallNORB': 5, 'fashion_mnist': 10, 'cifar10': 10, 'cifar100': 100}
+    options = {'mnist': 10, 'smallNORB': 5, 'fashion_mnist': 10, 'cifar10': 10, 'cifar100': 100, 'translationalCube': None}
     return options[dataset_name]
 
 
-from utils import create_inputs_mnist, create_inputs_norb, create_inputs_cifar10, create_inputs_cifar100
+from utils import create_inputs_mnist, create_inputs_norb, create_inputs_cifar10, create_inputs_cifar100, create_inputs_translationalCube
 
 
 def get_create_inputs(dataset_name: str, is_train: bool, epochs: int):
