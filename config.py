@@ -49,7 +49,11 @@ def get_coord_add(dataset_name: str):
                'smallNORB': ([[[8., 8.], [12., 8.], [16., 8.], [24., 8.]],
                               [[8., 12.], [12., 12.], [16., 12.], [24., 12.]],
                               [[8., 16.], [12., 16.], [16., 16.], [24., 16.]],
-                              [[8., 24.], [12., 24.], [16., 24.], [24., 24.]]], 32.)
+                              [[8., 24.], [12., 24.], [16., 24.], [24., 24.]]], 32.),
+               'quadrantClassification': (([[[8., 8.], [12., 8.], [16., 8.], [24., 8.]],
+                              [[8., 12.], [12., 12.], [16., 12.], [24., 12.]],
+                              [[8., 16.], [12., 16.], [16., 16.], [24., 16.]],
+                              [[8., 24.], [12., 24.], [16., 24.], [24., 24.]]], 32.))
                }
     coord_add, scale = options[dataset_name]
 
@@ -71,7 +75,7 @@ def get_dataset_size_test(dataset_name: str):
 
 
 def get_num_classes(dataset_name: str):
-    options = {'mnist': 10, 'smallNORB': 5, 'fashion_mnist': 10, 'cifar10': 10, 'cifar100': 100}
+    options = {'mnist': 10, 'smallNORB': 5, 'fashion_mnist': 10, 'cifar10': 10, 'cifar100': 100, 'quadrantClassification': 8}
     return options[dataset_name]
 
 
@@ -83,5 +87,6 @@ def get_create_inputs(dataset_name: str, is_train: bool, epochs: int):
                'fashion_mnist': lambda: create_inputs_mnist(is_train),
                'smallNORB': lambda: create_inputs_norb(is_train, epochs),
                'cifar10': lambda: create_inputs_cifar10(is_train),
-               'cifa100': lambda: create_inputs_cifa100(is_train)}
+               'cifa100': lambda: create_inputs_cifa100(is_train),
+               'quadrantClassification': lambda: create_inputs_quadrantClassification(is_train)}
     return options[dataset_name]
